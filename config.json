@@ -1,0 +1,9 @@
+
+   {
+    "database": {
+        "host": "localhost",
+        "dbname": "project2",
+        "username": "jharvard",
+        "password": "crimson"
+    }
+}
