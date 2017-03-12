@@ -2,6 +2,8 @@
 
 <?php
   
+  require("helpers.php"); 
+   
   $json= file_get_contents("../config.json");
  
   //To convert config.json contents to associative array

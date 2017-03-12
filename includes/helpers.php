@@ -4,6 +4,7 @@
   ** Helper functions.
   **/
 
+    require_once("config.php");
    
     /**
      * Logs out current user, if any.  Based on Example #1 at
@@ -23,10 +24,6 @@
         // destroy session
         session_destroy();
     }
-
-
-
-
   
      /**
      * Redirects user to location, which can be a URL or
