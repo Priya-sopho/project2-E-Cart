@@ -17,7 +17,7 @@
     //If user is not logged in
     if(!isset($_SESSION["id"]))
      { 
-       render("login.php",["title"=>"login"])
+       render("login.php",["title"=>"login"]);
        } 
      
      //Form required field validation
