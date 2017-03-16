@@ -1,5 +1,7 @@
 <?php
 
+   require_once("../includes/config.php");
+
   // Considering Category and College as variable to decide the store view
   if(isset($_POST['Category']))
   {
@@ -9,8 +11,8 @@
     //All items of required category
     $row = mysql_query('SELECT * FROM ITEM where Ca_id = ?', $ca_id[0]['Ca_id']);
     
-    //To change according to front end developer
-    return $row;
+    //To render store view
+    render("store.php",["tilte" => "store", "rows"=> $row]);
    }
    
   else if (isset($_POST['College']))
@@ -21,7 +23,7 @@
      //All items from required college
      $row = mysql_query('SELECT * FROM Item where Cid = ?',$cid[0]['Cid']);
      
-     return $row;
+     render("store.php",["tilte" => "store", "rows"=> $row]);
    }
    
    else
@@ -29,7 +31,7 @@
      //Select all items
      $row = mysql_query('SELECT * FROM Item');
      
-     return $row;
+     render("store.php",["tilte" => "store", "rows"=> $row]);
    }
    
 ?>        

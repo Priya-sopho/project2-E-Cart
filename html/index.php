@@ -15,7 +15,7 @@
   }
  }  */ 
  
-  $rows = mysql_query("SELECT Image, Title, Description, Price FROM item WHERE Uid = ?", $_SESSION["id"]);
+  $rows = mysql_query("SELECT Image, Title, Description, Price FROM Item WHERE Uid = ?", $_SESSION["id"]);
     
     $positions = [];
     foreach ($rows as $row)
