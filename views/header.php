@@ -10,9 +10,9 @@
         <link href="/css/styles.css" rel="stylesheet"/>
 
         <?php if (isset($title)): ?>
-            <title>College Kart: <?= htmlspecialchars($title) ?></title>
+            <title>College Cart: <?= htmlspecialchars($title) ?></title>
         <?php else: ?>
-            <title>College Kart</title>
+            <title>College Cart</title>
         <?php endif ?>
 
         <!-- https://jquery.com/ -->
@@ -31,7 +31,7 @@
 
             <div id="top">
                 <div>
-                    <a href="/"><img alt="C$50 Finance" src="/img/logo.png"/></a>
+                    <a href="/"><img alt="College Cart" src="/img/logo.png"/></a>
                 </div>
                 <?php if (!empty($_SESSION["id"])): ?>
                     <ul class="nav nav-pills">

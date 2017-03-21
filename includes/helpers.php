@@ -68,6 +68,16 @@
             trigger_error("Invalid view: {$view}", E_USER_ERROR);
         }
     }
+   
+     /***
+    To display apolgies
+  **/
+   function apologize($message)
+    {
+        render("apology.php", ["message" => $message]);
+    }
+    
+ 
 
 ?>
   

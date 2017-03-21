@@ -8,12 +8,13 @@
         </div>
         <div>
             College: <select name="college">
-            <option vlaue="all"> All </option>
+            <option value="all"> All </option>
             <?php 
             $row = mysql_query('Select * from College');
             while($r=mysql_fetch_assoc($row))
                 {
-                    echo '<option>'.$r["Name"].'</option>';
+                    $name = $r["Name"];
+                    echo "<option value= '$name'>".$name."</option>";
                 }
             ?>      
             </select>
