@@ -1,6 +1,6 @@
    {
     "database": {
-        "host": "localhost",
+        "host": "localhost", 
         "dbname": "project2",
         "username": "jharvard",
         "password": "crimson"
