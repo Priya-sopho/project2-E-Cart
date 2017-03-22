@@ -1,15 +1,16 @@
 <?php
   
  /***
-  ** This is to display store item by a specific user
+  ** This is the controller to  display store item by a specific user
   **/
  
  require("../includes/config.php");
- 
-  $rows = mysql_query("SELECT Image, Title, Description, Price FROM Item WHERE Uid = ?", $_SESSION["id"]);
+ $id = $_SESSION["id"];
+  $rows = mysql_query("SELECT Image, Title, Description, Price FROM Item WHERE Uid = $id");
+
     
     $positions = [];
-    while ($row = mysql_fetch_assoc($row))
+    while ($row = mysql_fetch_assoc($rows))
     {
       $positions[] = [
         "image" => $row["Image"],

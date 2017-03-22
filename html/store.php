@@ -1,5 +1,5 @@
 <?php
-
+ /*** This is to send view the item table contents on the basis of filters**/
    require_once("../includes/config.php");
 
   // Considering Category and College as variable to decide the store view

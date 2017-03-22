@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 12, 2017 at 01:21 AM
+-- Generation Time: Mar 22, 2017 at 09:03 AM
 -- Server version: 5.5.28
 -- PHP Version: 5.4.7
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `Account` (
   `Name` varchar(40) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `Cid` int(11) NOT NULL COMMENT 'References cid of college Table',
+  `Cid` varchar(10) NOT NULL COMMENT 'References cid of college Table',
   `Gender` char(1) NOT NULL COMMENT 'Either G or B',
   PRIMARY KEY (`Uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='This table contain all detail of account holder.' AUTO_INCREMENT=1 ;

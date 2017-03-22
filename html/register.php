@@ -33,7 +33,7 @@
      {
        if(!filter_var($_POST['email'],FILTER_VALIDATE_EMAIL))
         $message = "Invalid User Email";
-     }
+     
      
      //Password Matching Validation
      elseif($_POST['password']!=$_POST['confirm_password'])
@@ -46,12 +46,9 @@
        {
          $message = "College field is required";
        }
-      
    
      //Validation to check if gender is selected
-     if(!isset($message))
-     {
-       if(!isset($_POST['gender']))
+    else if(!isset($_POST['gender']))
        {
          $message = "Gender field is required";
        }
