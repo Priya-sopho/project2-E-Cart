@@ -35,7 +35,7 @@
         if (mysql_num_rows($rows) == 1)
         {
             // first (and only) row
-            $row = mysql_fetch_assoc($rows);
+             $row = mysql_fetch_assoc($rows);
 
             // compare hash of user's input against hash that's in database
             if (crypt($_POST["password"], $row["password"])=== $row["password"])
