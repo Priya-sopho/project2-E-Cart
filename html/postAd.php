@@ -57,9 +57,9 @@
          apologize("Enter amount in numerals");
         }
          
-           
-     else 
-     {
+  else 
+  
+   {
         //To get Category id
         $Ca_id = $_POST["category"];
         
@@ -72,20 +72,42 @@
        $desc = mysql_real_escape_string($_POST["description"]);
        $contact = mysql_real_escape_string($_POST["contact"]);
        $price = $_POST["price"];
-       //$image = $_POST["image"];
        
-        //Insert into item table
-      if( mysql_query("INSERT IGNORE INTO Item (Title, Description, Uid, Ca_id, Contact, Price) 
-            VALUES ('$title','$desc',$id,$Ca_id,'$contact',$price )") === false ) 
+       
+       //For image processing
+       if(empty($_FILES)|| !isset($_FILES['image']))
+       {
+           $image = "";
+        }
+        
+        else
+       {  $target_dir = "uploads/";
+          $target_file = $target_dir . basename($_FILES["image"]["name"]);
+          $uploadOk = 1;
+          $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
+          if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+          echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
+          } else {
+            $image = "";
+          echo "Sorry, there was an error uploading your file.";
+          }
+        }
+       
+    
+       //Insert into item table
+      if( mysql_query("INSERT IGNORE INTO Item (Title, Description, Uid, Ca_id, Contact, Price, Image) 
+            VALUES ('$title','$desc',$id,$Ca_id,'$contact',$price ,'$image')") === false ) 
        {
            die(mysql_error());
           apologize("Ad wasn't posted successfully");
-        }  
+        }
+          
        
         else
         {
-           redirect("index.php");
-        }
+          redirect("index.php");
+        } 
       }         
   }
   
