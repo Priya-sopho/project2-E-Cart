@@ -11,21 +11,22 @@
  <b>
  Cateories: &nbsp;
   <?php
-    $row = mysql_query("SELECT * FROM Category");
-    while($r=mysql_fetch_assoc($row))
+    $record = mysql_query("SELECT * FROM Category");
+    while($r=mysql_fetch_assoc($record))
     {
     $name = $r["Cname"];
     echo "<a href= 'store.php' name='Category'>".$name."</a> | ";
     }
   ?>      
- <select name="College" onchange="chk(this.value)">
+ <select action = 'store.php' name="College" onchange="chk(this.value)">
   <option value="0" selected disabled>Select College</option>
     <?php 
-      $row = mysql_query('Select * from College');
-      while($r=mysql_fetch_assoc($row))
+      $record = mysql_query('Select * from College');
+      while($r=mysql_fetch_assoc($record))
       {
         $name = $r["Name"];
-        echo "<option value= '$name'>".$name."</option>";
+        $cid = $r["Cid"];
+        echo "<option value= '$cid'>".$name."</option>";
       }
     ?>      
   </select></b><br><br>
@@ -41,22 +42,28 @@
                 <th style="border: 1px solid #CCC; background: #F3F3F3; font-weight: bold; text-align:center;">Contact Seller</th>
             </tr>    
             
-            <?php foreach ($row as $r): ?>
-                <tr>
+            <?php while ($r = mysql_fetch_assoc($rows)): ?>
+              <?php
+                  $uid = $r["Uid"];
+                  $ca_id = $r["Ca_id"];
+                  $query1="Select Name FROM College where Cid = ( SELECT Cid from Account where UID = '$uid')";
+                  $query2= "Select Cname FROM Category where Ca_id = $ca_id";
+                  ?>
+                   <tr>
                     <td style="border: 1px solid #CCC;"><?= $r["Image"] ?> </td>
                     <td style="border: 1px solid #CCC;"><?= $r["Title"] ?></td>
                     <td style="border: 1px solid #CCC;"><?= $r["Price"] ?></td>
-                    <td style="border: 1px solid #CCC;"><?php $id=$r["Uid"]; $name = mysql_query("SELECT Name FROM College WHERE Cid=$id"); 
+                    <td style="border: 1px solid #CCC;"><?php $name = mysql_query($query1); 
                       $clg= mysql_fetch_assoc($name);
                       echo $clg["Name"];
                       ?></td>
-                    <td style="border: 1px solid #CCC;"><?php $id=$r["Ca_id"]; $name = mysql_query("SELECT Cname FROM Category WHERE Ca_id=$id"); 
+                    <td style="border: 1px solid #CCC;"><?php $name = mysql_query($query2); 
                       $ctg= mysql_fetch_assoc($name);
-                      echo $ctg["Name"];
+                      echo $ctg["Cname"];
                       ?></td>
                     <td style="border: 1px solid #CCC;"><?= "<a href='seller.php'>Contact Seller</a>" ?></td>
                 </tr>
-            <?php endforeach ?>
+            <?php endwhile ?>
     </table>
 </div>
  
