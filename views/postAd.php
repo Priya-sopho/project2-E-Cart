@@ -8,7 +8,8 @@
             while($r=mysql_fetch_assoc($row))
                 {
                     $name = $r["Cname"];
-                    echo "<option value= '$name'>".$name."</option>";
+                    $value = $r["Ca_id"];
+                    echo "<option value= $value>".$name."</option>";
                 }
             ?>      
             </select><br><br>

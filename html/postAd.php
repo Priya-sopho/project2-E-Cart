@@ -1,5 +1,7 @@
 <?php 
- 
+  /***This to validate advertisement and 
+    add to db if validated  ***/
+     
  //configuration
  require('../includes/config.php');
  
@@ -28,39 +30,62 @@
          continue;
         if(empty($_POST[$key]))
          {
-           $message = ucwords($key)." field is required.";
-           break;
+           if($key == "price" && $_POST["choice"] == "donate")
+            {  
+             //Validation to check if donation
+               if($_POST['price']>0)
+                {
+                apologize("If you want to donate set price to 0");
+                }
+                else
+                 $_POST['price'] = 0;
+            }       
+           else     
+            {
+              apologize(ucwords($key)." field is required.");
+              break;
+            }  
          }
       }
       
      
-     //Validation to check if donation
-     if(!isset($message))
-     {
-       if($_POST['donate_or_sell']== "donate" and $_POST['price']>0)
+     
+    
+    //Validation to check amount      
+    if($_POST['choice']== "sell" && !is_numeric($_POST['price']))
        {
-         $message = "If you want to donate set price to 0";
-       }
-     }      
+         apologize("Enter amount in numerals");
+        }
+         
            
      else 
      {
         //To get Category id
-        $ca_id = mysql_query('SELECT Ca_id FROM Category where cname = ?',$_POST["category"]);
+        $Ca_id = $_POST["category"];
+        
+        //User id
+        $id = $_SESSION["id"];
        
-        //To get college id of the user
-        $cid = mysql_query('SELECT Cid FROM Account where Uid = ?', $_SESSION['id']);    
-
+               
+        //To insert while preventing sql injection
+       $title = mysql_real_escape_string($_POST["title"]);
+       $desc = mysql_real_escape_string($_POST["description"]);
+       $contact = mysql_real_escape_string($_POST["contact"]);
+       $price = $_POST["price"];
+       //$image = $_POST["image"];
+       
         //Insert into item table
-       if(mysql_query("INSERT IGNORE INTO Item (Title, Description, Uid, Ca_id, Contact, Price, Image,Cid) VALUES (?,?,?,?,?,?,?,?)", htmlspecialchars($_POST['title']),htmlspecialchars($_POST['description']),$_SESSION['id'],$ca_id,$_POST['contact'],$_POST['price'],$_POST['image'],$cid[0]['Cid'])===false)
-        {
-          $message = "Ad wasn't posted successfully";
+      if( mysql_query("INSERT IGNORE INTO Item (Title, Description, Uid, Ca_id, Contact, Price) 
+            VALUES ('$title','$desc',$id,$Ca_id,'$contact',$price )") === false ) 
+       {
+           die(mysql_error());
+          apologize("Ad wasn't posted successfully");
         }  
        
         else
         {
            redirect("index.php");
-         }
+        }
       }         
   }
   
