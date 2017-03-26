@@ -23,8 +23,11 @@
      // To get college id to reference items
      $cid = $_GET['q2']; 
      
+    $rec = mysql_fetch_assoc(mysql_query("SELECT Uid FROM Account where Cid = '$cid'"));
+    $uid = $rec['Uid'];
+    
      //All items from required college
-     $row = mysql_query("SELECT * FROM Item where Cid = '$cid'");
+     $row = mysql_query("SELECT * FROM Item where Uid = '$uid'");
      
      render("store.php",["tilte" => "store", "rows"=> $row]);
    }

@@ -9,7 +9,7 @@
  </h1>
  <?php endif ?>
  <b>
- Cateories: &nbsp;
+ Categories: &nbsp;
   <?php
     $record = mysql_query("SELECT * FROM Category");
     while($r=mysql_fetch_assoc($record))
@@ -18,8 +18,9 @@
     $cid = $r["Ca_id"];
     echo "<a href= 'store.php?q=$cid' name='Category'>".$name."</a> | ";
     }
-  ?>      
- <select action = 'store.php' name="College" onchange="chk(this.value)">
+  ?>
+  <form action="store.php" style="display:inline;">
+ <select onchange="this.form.submit(); "  name="q2" value="<?= $cid ?>">
   <option value="0"Selected disabled>Select College</option>
     <?php 
       $record = mysql_query('Select * from College');
@@ -27,10 +28,10 @@
       {
         $name = $r["Name"];
         $cid = $r["Cid"];  
-        echo "<option value= '$cid'>".$name."</option>";
+        echo "<option value= '$cid' >".$name."</option>";
       }
     ?>      
-  </select></b><br><br>
+  </select></b></form><br><br>
   
   <div class="container">
     <table style="margin-left:auto; margin-right:auto; color: #333; font-family: Helvetica, Arial, sans-serif; width: 640px; border-collapse:collapse; border-spacing: 0;" >
