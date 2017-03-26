@@ -6,13 +6,14 @@
  
  require("../includes/config.php");
  $id = $_SESSION["id"];
-  $rows = mysql_query("SELECT Image, Title, Description, Price FROM Item WHERE Uid = $id");
+  $rows = mysql_query("SELECT I_id, Image, Title, Description, Price FROM Item WHERE Uid = $id");
 
     
     $positions = [];
     while ($row = mysql_fetch_assoc($rows))
     {
       $positions[] = [
+         "id" => $row["I_id"],
         "image" => $row["Image"],
         "title" => $row["Title"],
         "description" => $row["Description"],

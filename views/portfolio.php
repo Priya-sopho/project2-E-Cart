@@ -10,11 +10,15 @@
             
             <?php foreach ($positions as $position): ?>
                 <tr>
+              <?php   $id = $position["id"]; ?>
                     <td style="border: 1px solid #CCC;"><?= $position["image"] ?> </td>
                     <td style="border: 1px solid #CCC;"><?= $position["title"] ?></td>
-                    <td style="border: 1px solid #CCC;"><?= $position["descrition"] ?></td>
+                    <td style="border: 1px solid #CCC;"><?= $position["description"] ?></td>
                     <td style="border: 1px solid #CCC;"><?= $position["price"] ?></td>
-                    <td style="border: 1px solid #CCC;"><?= '<input type="submit" value="Delete">' ?></td>
+                    <form action="delete.php" method="post">  
+                    <input type=hidden name="id" value= "<?php echo $id; ?>"/>
+                    <td style="border: 1px solid #CCC;"><input type="submit" name="submit" value="Delete"></td>
+                    </form>
                 </tr>
             <?php endforeach ?>
     </table>
