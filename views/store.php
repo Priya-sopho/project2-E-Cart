@@ -48,6 +48,7 @@
               <?php
                   $uid = $r["Uid"];
                   $ca_id = $r["Ca_id"];
+                  $id = $r["I_id"];
                   $query1="Select Name FROM College where Cid = ( SELECT Cid from Account where UID = '$uid')";
                   $query2= "Select Cname FROM Category where Ca_id = $ca_id";
                   ?>
@@ -63,7 +64,7 @@
                       $ctg= mysql_fetch_assoc($name);
                       echo $ctg["Cname"];
                       ?></td>
-                    <td style="border: 1px solid #CCC;"><?= "<a href='seller.php'>Contact Seller</a>" ?></td>
+                    <td style="border: 1px solid #CCC;"><?= "<a href='seller.php?id=$id'>Contact Seller</a>" ?></td>
                 </tr>
             <?php endwhile ?>
     </table>
