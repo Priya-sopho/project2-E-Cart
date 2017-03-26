@@ -1,4 +1,4 @@
-<form action="postAd.php" method="post">
+<form action="postAd.php" method="post" enctype="multipart/form-data">
     <fieldset>
         <div>
             Category: <select name="category" onchange="chk(this.value)">
@@ -30,7 +30,9 @@
              <input type="text" name="price" placeholder="Your Price (In Rs.)"><br>
         </div>
         <div class="form-group">
-                <center><input type="file" name="image" /></center>
+            <center><input type="file" name="image" id="image" /></center>
+            <button id="upload">Upload</button>
+    
         </div>
         <div class="form-group">
             <button class="btn btn-default" type="submit">
