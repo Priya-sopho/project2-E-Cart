@@ -52,7 +52,7 @@
                   $query2= "Select Cname FROM Category where Ca_id = $ca_id";
                   ?>
                    <tr>
-                    <td style="border: 1px solid #CCC;"><?= $r["Image"] ?> </td>
+                    <td style="border: 1px solid #CCC;"><?= "<img src=\"".$r["Image"]."\" width=100px height=50px >" ?> </td>
                     <td style="border: 1px solid #CCC;"><?= $r["Title"] ?></td>
                     <td style="border: 1px solid #CCC;"><?= $r["Price"] ?></td>
                     <td style="border: 1px solid #CCC;"><?php $name = mysql_query($query1); 

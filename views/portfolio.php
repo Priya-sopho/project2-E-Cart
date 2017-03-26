@@ -11,7 +11,7 @@
             <?php foreach ($positions as $position): ?>
                 <tr>
               <?php   $id = $position["id"]; ?>
-                    <td style="border: 1px solid #CCC;"><?= $position["image"] ?> </td>
+                    <td style="border: 1px solid #CCC;"><?= "<img src=\"".$position["image"]."\" width=100px height=50px >" ?> </td>
                     <td style="border: 1px solid #CCC;"><?= $position["title"] ?></td>
                     <td style="border: 1px solid #CCC;"><?= $position["description"] ?></td>
                     <td style="border: 1px solid #CCC;"><?= $position["price"] ?></td>
