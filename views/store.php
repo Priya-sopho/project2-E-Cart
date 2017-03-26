@@ -15,17 +15,18 @@
     while($r=mysql_fetch_assoc($record))
     {
     $name = $r["Cname"];
-    echo "<a href= 'store.php' name='Category'>".$name."</a> | ";
+    $cid = $r["Ca_id"];
+    echo "<a href= 'store.php?q=$cid' name='Category'>".$name."</a> | ";
     }
   ?>      
  <select action = 'store.php' name="College" onchange="chk(this.value)">
-  <option value="0" selected disabled>Select College</option>
+  <option value="0"Selected disabled>Select College</option>
     <?php 
       $record = mysql_query('Select * from College');
       while($r=mysql_fetch_assoc($record))
       {
         $name = $r["Name"];
-        $cid = $r["Cid"];
+        $cid = $r["Cid"];  
         echo "<option value= '$cid'>".$name."</option>";
       }
     ?>      
