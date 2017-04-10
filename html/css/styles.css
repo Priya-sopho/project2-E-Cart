@@ -41,7 +41,8 @@
 {
     /* shrink bottom's font size */
     font-size: smaller;
-
+    
+    background-color: #f0f0f0;
     /* surround with whitespace */
     margin: 20px;
 }
