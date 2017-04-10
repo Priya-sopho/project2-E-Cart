@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 22, 2017 at 11:35 AM
+-- Generation Time: Apr 10, 2017 at 04:00 PM
 -- Server version: 5.5.28
 -- PHP Version: 5.4.7
 
@@ -35,7 +35,16 @@ CREATE TABLE IF NOT EXISTS `Account` (
   `Gender` char(1) NOT NULL COMMENT 'Either G or B',
   PRIMARY KEY (`Uid`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='This table contain all detail of account holder.' AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='This table contain all detail of account holder.' AUTO_INCREMENT=16 ;
+
+--
+-- Dumping data for table `Account`
+--
+
+INSERT INTO `Account` (`Uid`, `Name`, `email`, `password`, `Cid`, `Gender`) VALUES
+(13, 'Priya', 'prrani28@gmail.com', '$1$RnpUQIU9$lsIoPHfW4Hj6rp7e/lwkL0', 'DTU', 'f'),
+(14, 'Divya', 'divyarn23@gmail.com', '$1$vMRH9yw/$V2cbSZY7yGOaWnAgp.j0M.', 'BITS', 'f'),
+(15, 'Deep', 'deep9@web.com', '$1$cKe3YIAU$KOZ8zq7sOxrtQsk.CgQPV0', 'BITS', 'm');
 
 -- --------------------------------------------------------
 
@@ -100,9 +109,19 @@ CREATE TABLE IF NOT EXISTS `Item` (
   `Ca_id` int(11) NOT NULL,
   `Contact` varchar(150) NOT NULL,
   `Price` mediumint(9) NOT NULL COMMENT 'If price =0 => for donation',
-  `Image` mediumblob NOT NULL,
+  `Image` varchar(100) NOT NULL,
   PRIMARY KEY (`I_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='This table contain all the item to sell.' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='This table contain all the item to sell.' AUTO_INCREMENT=32 ;
+
+--
+-- Dumping data for table `Item`
+--
+
+INSERT INTO `Item` (`I_id`, `Title`, `Description`, `Uid`, `Ca_id`, `Contact`, `Price`, `Image`) VALUES
+(2, 'Lab Coat', 'Well conditioned ', 14, 2, 'contact @ 8903456123', 120, ''),
+(29, 'Bat', 'winning bat', 13, 5, 'prrani28@gmail.com', 250, 'uploads/bat.jpg'),
+(30, 'Lab Coat', 'Well conditioned', 13, 2, 'Contact @ 9874384784', 150, 'uploads/lab_coat.jpg'),
+(31, 'Scooty', 'Well conditioned and maintained.', 13, 6, 'Only interested party should contact @ 9836583398', 50000, 'uploads/scooty.jpg');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
