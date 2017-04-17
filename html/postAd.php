@@ -77,9 +77,10 @@
        $image = $_POST["image"];
        
       //For image processing
-      if(isset($_FILES["image"]))
-        require("upload.php");
-        
+      if(!empty($_FILES["image"]) && $_FILES["image"]["tmp_name"])
+       { require("upload.php");
+       
+        }
         
     
        //Insert into item table
@@ -93,7 +94,7 @@
        
         else
         {
-          redirect("index.php");
+          render("postedAd.php",["title"=>"Success"]);
         } 
       }         
   }

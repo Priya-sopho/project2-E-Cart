@@ -50,11 +50,16 @@
                   $uid = $r["Uid"];
                   $ca_id = $r["Ca_id"];
                   $id = $r["I_id"];
+                  $image = $r["Image"];
+                  if($image == '')
+                  {
+                    $image = "uploads/default.jpg";
+                  }
                   $query1="Select Name FROM College where Cid = ( SELECT Cid from Account where UID = '$uid')";
                   $query2= "Select Cname FROM Category where Ca_id = $ca_id";
                   ?>
                    <tr>
-                    <td style="border: 1px solid #CCC;"><?= "<img src=\"".$r["Image"]."\" width=100px height=50px >" ?> </td>
+                    <td style="border: 1px solid #CCC;"><?= "<img src=\"".$image."\" width=100px height=50px >" ?> </td>
                     <td style="border: 1px solid #CCC;"><?= $r["Title"] ?></td>
                     <td style="border: 1px solid #CCC;"><?= $r["Description"] ?></td>
                     <td style="border: 1px solid #CCC;"><?= $r["Price"] ?></td>

@@ -1,7 +1,7 @@
 <form action="postAd.php" method="post" enctype="multipart/form-data">
     <fieldset>
         <div>
-            Category: <select name="category" onchange="chk(this.value)">
+            Category: <select name="category">
             <option value="0" selected disabled>Select Category</option>
             <?php 
             $row = mysql_query('Select * from Category');
@@ -31,8 +31,7 @@
         </div>
         <div class="form-group">
             <center><input type="file" name="image" id="image" /></center>
-            <button id="upload">Upload</button>
-    
+            
         </div>
         <div class="form-group">
             <button class="btn btn-default" type="submit">

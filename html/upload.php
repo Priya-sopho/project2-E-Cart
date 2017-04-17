@@ -8,7 +8,7 @@
  $target_dir = "uploads/";
  $target_file = $target_dir.basename($_FILES["image"]["name"]);
  $imgType = pathinfo($target_file,PATHINFO_EXTENSION);
- print_r($_FILES);
+ 
  //To check file is actual image file or fake image
  
    $check = getimagesize($_FILES["image"]["tmp_name"]);
