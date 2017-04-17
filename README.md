@@ -35,6 +35,7 @@ Files and folders:
             login_form.php(display login form )
             portfolio.php(display portfolio page)
             postAd.php(form to post Ad)
+            postedAd.php (to render success message)
             register_form.php(form to dispaly registration form)
             seller.php(to display the seller detail for corresponding item)
             store.php(to display the store page)
